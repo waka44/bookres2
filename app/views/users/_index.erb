@@ -1,0 +1,16 @@
+<h2>Users</h2>
+
+<%@= @users.each do |user| %>
+
+<div>
+    <h4>image</h4>
+    <span><%= user.image %></span>
+</div>
+
+<div>
+    <h4>name</h4>
+    <%= user.name %>
+</div>
+
+<P><%= link_to 'show', show_user_path(@user) %></P>
+<% end %>
