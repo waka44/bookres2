@@ -2,17 +2,4 @@
 
 <%= render 'books/new', books: @books %>
 
-<h2>Book detail</h2>
-<div>
-<p>
-<%= image_tag @book.get_image %>
-<p>Title：<%= book.title %></p>
-<p>Opinion：<%= @book.body %></p>
-<p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-<% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book)  %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-</p>
-<p><%= link_to '<% user.name %>', user_path(:id) %></p>
- <% end %>
-</div>
+<%= render 'books/index', books: @book %>

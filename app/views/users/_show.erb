@@ -1,8 +1,0 @@
-<h2>User info</h2>
-<div>
-    <h4><%= @user.name %></h4>
-    <%= image_tag @user.get_profile_image(100,100) %>
-    <% if @user == current_user %>
-    <p><%= link_to '<% fas fa-user-cog %>', edit_user_path(@user) %></p>
-<% end %>
-</div>

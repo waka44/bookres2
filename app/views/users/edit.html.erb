@@ -5,6 +5,6 @@
   <label for="inputImage">Image</label>
   <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %> 
   <label for="inputName">Introduction</label>
-  <%= f.text_field :body, autofocus: true, id:"body", placeholder:"Introduction"%>
+  <%= f.text_field :introduction, autofocus: true, id:"introduction", placeholder:"Introduction"%>
   <%= f.submit "Update User" %>
 <% end %>
