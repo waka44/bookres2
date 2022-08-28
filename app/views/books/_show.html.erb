@@ -1,0 +1,39 @@
+        <%= image_tag @user.get_profile_image, size: "80x80" %>
+    <table class = "table table-hover table-inverse" >
+    <thead>
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan = "3"></th>
+        </tr>
+        
+        <tr>
+            <td>
+                <%= link_to(book.user) do %>
+                <%= image_tag book.user.get_profile_image, size: "50x50" %>
+                <% end %>
+            </td> 
+            <td><%= link_to book.title, book_path(book.id) %></td>
+            <td><%= book.body %></td>
+            <td>
+                <th>
+                <%= link_to "Edit", edit_book_path(@book)  %>
+                <%= f.submit 'Edit', class:"btn btn-lg btn-block btn-info mt-4" %>
+                </th>
+                <th>
+                |
+                </th>
+                <th>
+                <%= link_to "Destroy", book_path(@book), method: :delete %>
+                <%= f.submit 'Destroy', class:"btn btn-lg btn-block btn-info mt-4" %>
+                </th>
+            </td>
+            
+        </tr>
+        
+    </thead>
+</table>       
+
+        
+ 

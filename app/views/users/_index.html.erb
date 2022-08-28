@@ -1,16 +1,31 @@
-<h2>Users</h2>
-
-<% users.each do |user| %>
-
-<div>
-    <h4>image</h4>
-    <span><%= image_tag user.get_profile_image %></span>
-</div>
-
-<div>
-    <h4>name</h4>
-    <%= user.name %>
-</div>
-
-<P><%= link_to 'show', user_path(user) %></P>
-<% end %>
+            <table class = "table">
+                <thead>
+                    <tr>
+                        <th>image</th>
+                        <th>name</th>
+                        <th colspan = "3"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.each do |user| %>
+                    <tr>
+                        <td>
+                            <%= link_to user_path(user.id) do %>
+                            <% if user.profile_image.attached? %>
+                            <% image_tag user.profile_image %>
+                            <% else %>
+                            <%image_tag 'default-image'  %>
+                            <% end %>
+                            <% end %>
+                        </td> 
+                        <td><%= link_to user.name, user_path(user.id) %></td>
+                        <td><%= user.introduction %></td>
+                    </tr>
+                    <tr>
+                        <%= link_to edit_user_path(user.id) get :books do %>
+                        <%= icon("fas", "user-cog", "user-cog-icon") %>
+                        <% end %>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
