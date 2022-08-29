@@ -17,7 +17,7 @@
         <div class="container">
           <div class = "navbar-brand text-light">
             <span>
-              <%= link_to 'Bookers', root_path %>
+              <%= link_to 'Bookers', root_path, class: "text-light" %>
             </span>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -28,53 +28,29 @@
               <lu class = "navbar-nav ml-auto" >
                 <% if user_signed_in? %>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "home",  class: "home-icon") %>
-                    <%= link_to 'Home', user_path(current_user.id) %>
-                  </div>
+                    <%= link_to icon('fas', 'home','Home'), user_path(current_user.id), class: "nav-link text-light" %>
                 </li>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "users",  class: "users-icon") %>
-                    <%= link_to 'Users', users_path %>
-                  </div>
+                    <%= link_to icon('fas', 'users', 'Users'), users_path, class: "nav-link text-light" %>
                 </il>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "book-open",  class: "book-open-icon") %>
-                    <%= link_to 'Books', books_path %>
-                  </div>
+                    <%= link_to icon('fas', 'book-open', 'Books'), books_path, class: "nav-link text-light" %>
                 </il>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "sign-out-alt",  class: "sign-out-icon-alt") %>
-                    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-                  </div>
+                    <%= link_to icon('fas', 'sign-out-alt', 'Log out'), destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
                 </il>
                 <% else %>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "home",  class: "home-icon") %>
-                   <%= link_to 'Home', root_path %>
-                  </div>
+                   <%= link_to icon('fas', 'home', 'Home'), root_path, class: "nav-link text-light" %>
                 </li>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "link",  class: "link-icon") %>
-                    <%= link_to 'About', about_path %>
-                  </div>
+                    <%= link_to icon('fas', 'link', 'About'), about_path, class: "nav-link text-light" %>
                 </li>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "user-plus",  class: "user-plus-icon") %>
-                    <%= link_to "Sign up", new_user_registration_path %>
-                  </div>
+                    <%= link_to icon('fas', 'user-plus', 'Sign up'), new_user_registration_path, class: "nav-link text-light" %>
                 </li>
                 <li class= "nav-item">
-                  <div class = "nav-link text-light" >
-                    <%= icon("fas", "sign-in-alt",  class: "sign-in-alt-icon") %>
-                    <%= link_to "Log in", new_user_session_path %>
-                  </div>
+                    <%= link_to icon('fas', 'sign-in-alt', 'Log in'), new_user_session_path, class: "nav-link text-light" %>
                 </li>
                 <% end %>
               </lu>
@@ -84,6 +60,9 @@
       </nav>
     </header>
     <main class="mb-auto">
+    <% flash.each do |message_type, message| %>
+　　<div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     </main>
     <footer>
